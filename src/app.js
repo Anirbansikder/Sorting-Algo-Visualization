@@ -283,7 +283,7 @@ const MergeSort = async(delay = speed) => {
 		return;
 	}
 	await enableButtons('Merge');
-    await mergeSortRec(0,no_of_bars-1);
+    await mergeSortRec(0,bars.length-1);
 	await reset_color();
     await disableButtons('Merge');
 }
@@ -345,8 +345,8 @@ const QuickSort = async(delay = speed) => {
 		return;
 	}
 	await enableButtons('Quick');
-    await quickSortRec(0,no_of_bars-1);
-	for(var i=0;i<no_of_bars;i+=1){
+    await quickSortRec(0,bars.length-1);
+	for(var i=0;i<bars.length;i+=1){
 		bars[i].style.backgroundColor = " rgb(49, 226, 13)";
 	}
 	await reset_color();
