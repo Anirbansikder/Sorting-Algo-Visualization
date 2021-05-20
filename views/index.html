@@ -14,6 +14,14 @@
         <main>
             <nav class="navbar justify-content-between">
                 <button type="button" class="btn btn-outline-primary" id="generate" onclick="generate_bars()">New Array</button>
+                <span>
+                    <label for="formControlRangeArray" style="color : white;">Select Array Size</label>
+                    <input type="range" class="form-control-range formControlRangeArray" id="formControlRangeArray" min=5 max = 100 step=1 value=100>
+                 </span>
+                 <span>
+                    <label for="formControlRangeSpeed" style="color : white;">Select Speed</label>
+                    <input type="range" class="form-control-range formControlRangeSpeed" id="formControlRangeSpeed" min=1 max = 10 step=1 value=7>
+                 </span>
                 <button type="button" class="btn btn-outline-primary" id="Bubble" onclick="BubbleSort()">Bubble sort</button>
                 <button type="button" class="btn btn-outline-primary" id="Insertion" onclick="InsertionSort()">Insertion sort</button>
                 <button type="button" class="btn btn-outline-primary" id="Selection" onclick="SelectionSort()">Selection sort</button>
@@ -23,7 +31,7 @@
             </nav>
             <div class="head" id="head">Click On <I>New Array</I> To Create One</div>
             <div class="div_element">
-                <div class="vertical-bars"></div>
+                <div class="vertical-bars" id="vbars"></div>
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
