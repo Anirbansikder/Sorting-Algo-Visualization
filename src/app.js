@@ -62,7 +62,8 @@ const generate_bars = () => {
 		const bar = document.createElement('div');
 		bar.classList.add('bar');
 		bar.style.height = `${value * 4}px`;
-		bar.style.transform = `translateX(${(i-no_of_bars/2) * 10}px`;
+		bar.style.transform = `translateX(${(i-parseInt(no_of_bars/2)) * (20 - parseInt(no_of_bars/10))}px`;
+		bar.style.width = `${(20 - parseInt(no_of_bars/10)) - 4}px`;
 		const barLabel = document.createElement("label");
 		barLabel.classList.add("bar_id");
 		barLabel.setAttribute("value", value);
@@ -71,7 +72,7 @@ const generate_bars = () => {
 	}
 }
 
-const SelectionSort = async(delay = speed) => {
+const SelectionSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
@@ -118,7 +119,7 @@ const SelectionSort = async(delay = speed) => {
 	await disableButtons('Selection');
 }
 
-const BubbleSort = async(delay = speed) => {
+const BubbleSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
@@ -151,7 +152,7 @@ const BubbleSort = async(delay = speed) => {
 	await disableButtons('Bubble');
 }
 
-const InsertionSort = async(delay = speed) => {
+const InsertionSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
@@ -267,7 +268,7 @@ const mergeArray = async(start,mid,end) => {
     }
 }
 
-const mergeSortRec = async(start,end,delay=speed) => {
+const mergeSortRec = async(start,end) => {
 	if(start<end){
 		let mid = parseInt((start + end)/2);
 		await mergeSortRec(start, mid);
@@ -276,7 +277,7 @@ const mergeSortRec = async(start,end,delay=speed) => {
 	}
 }
 
-const MergeSort = async(delay = speed) => {
+const MergeSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
@@ -328,7 +329,7 @@ const partition = async(low ,high) => {
     return i+1;
 }
 
-const quickSortRec = async(low,high , delay = 1) => {
+const quickSortRec = async(low,high) => {
 	let bars = document.querySelectorAll(".bar");
 	if(low<high){
 		var j = await partition(low,high);
@@ -338,7 +339,7 @@ const quickSortRec = async(low,high , delay = 1) => {
 	}
 }
 
-const QuickSort = async(delay = speed) => {
+const QuickSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
@@ -374,13 +375,18 @@ const heapify = async(n,idx) => {
 	);
 }
 
-const HeapSorting = async(delay = speed) => {
+const HeapSorting = async() => {
 	let bars = document.querySelectorAll(".bar");
-	for(var i = (bars.length/2)-1;i>=0;i-=1){
+	for(var i = parseInt(bars.length/2)-1;i>=0;i-=1){
 		bars[i].style.backgroundColor = "yellow";
 		await heapify(bars.length,i);
 		bars[i].style.backgroundColor = " rgb(24, 190, 255)";
 	}
+	await new Promise((resolve) =>
+		setTimeout(() => {
+		resolve();
+		}, 500)
+	);
 	for(var i = bars.length-1;i>0;i-=1){
 		[arr[0] , arr[i]] = [arr[i] , arr[0]];
 		[bars[0].style.height , bars[i].style.height] = [bars[i].style.height , bars[0].style.height];
@@ -397,7 +403,7 @@ const HeapSorting = async(delay = speed) => {
 	bars[0].style.backgroundColor = " rgb(49, 226, 13)";
 }
 
-const HeapSort = async(delay = 1) => {
+const HeapSort = async() => {
 	let bars = document.querySelectorAll(".bar");
 	if(bars.length == 0){
 		document.getElementById('head').innerHTML = `<I>Create An Array First</I>`;
